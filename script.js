@@ -5,10 +5,14 @@ function getComputerChoice() {
     return choice;
 }
 
+let playerPoints = 0;
+let computerPoints = 0;
+
 function playTurn(plr) {
     let computerSelection = getComputerChoice();
     let playerSelection = plr;
     let roundWinner;
+    
 
     if (playerSelection === computerSelection) {
         roundWinner = 'tie'
@@ -19,6 +23,7 @@ function playTurn(plr) {
         (playerSelection === 'PAPER' && computerSelection === 'ROCK')
       ) {
         roundWinner = 'player'
+        playerPoints = playerPoints + 1;
       }
       if (
         (computerSelection === 'ROCK' && playerSelection === 'SCISSORS') ||
@@ -26,10 +31,23 @@ function playTurn(plr) {
         (computerSelection === 'PAPER' && playerSelection === 'ROCK')
       ) {
         roundWinner = 'computer'
+        computerPoints = computerPoints + 1;
     }
 
+    document.getElementById("Points").innerHTML = "Player Points: " + playerPoints + "  |  " + "Computer Points: " + computerPoints;
+
     document.getElementById("Result").innerHTML = "Player: " + playerSelection + " - Computer: " + computerSelection + " !!! ---  " + roundWinner + " Wins!!"
-    
+
+    if (playerPoints === 5) {
+      document.getElementById("Result").innerHTML = "Player Wins The GAME!!!!"
+      playerPoints = 0;
+      computerPoints = 0;
+    }
+    if (computerPoints === 5) {
+      document.getElementById("Result").innerHTML = "Computer Wins The GAME!!!!"
+      computerPoints = 0;
+      playerPoints = 0;
+    }
 }
 
 window.onload = function() {
