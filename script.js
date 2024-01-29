@@ -28,7 +28,7 @@ function playTurn(plr) {
         roundWinner = 'computer'
     }
 
-    console.log("Player: " + playerSelection + " - Computer: " + computerSelection + " !!! ---  " + roundWinner + " Wins!!")
+    document.getElementById("Result").innerHTML = "Player: " + playerSelection + " - Computer: " + computerSelection + " !!! ---  " + roundWinner + " Wins!!"
     
 }
 
