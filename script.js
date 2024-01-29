@@ -5,9 +5,9 @@ function getComputerChoice() {
     return choice;
 }
 
-function playTurn() {
+function playTurn(plr) {
     let computerSelection = getComputerChoice();
-    let playerSelection = prompt("ENTER : ROCK , PAPER , SCISSORS");
+    let playerSelection = plr;
     let roundWinner;
 
     if (playerSelection === computerSelection) {
@@ -28,10 +28,12 @@ function playTurn() {
         roundWinner = 'computer'
     }
 
-    console.log(roundWinner + " Wins!!")
+    console.log("Player: " + playerSelection + " - Computer: " + computerSelection + " !!! ---  " + roundWinner + " Wins!!")
     
 }
 
-for (let i = 0; i < 5; i++) {
-    playTurn();
-}
+window.onload = function() {
+  document.getElementById("ROCK").addEventListener("click", function(){playTurn("ROCK");});
+  document.getElementById("PAPER").addEventListener("click", function(){playTurn("PAPER");});
+  document.getElementById("SCISSORS").addEventListener("click", function(){playTurn("SCISSORS");});
+};
